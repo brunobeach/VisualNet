@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="dbModelStoreContainer">
+    <EntitySet Name="aviones" EntityType="dbModel.Store.aviones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="piloto_avion" EntityType="dbModel.Store.piloto_avion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pilotos" EntityType="dbModel.Store.pilotos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tipo" EntityType="dbModel.Store.tipo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_aviones_tipo" Association="dbModel.Store.FK_aviones_tipo">
+      <End Role="tipo" EntitySet="tipo" />
+      <End Role="aviones" EntitySet="aviones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_piloto_avion_aviones" Association="dbModel.Store.FK_piloto_avion_aviones">
+      <End Role="aviones" EntitySet="aviones" />
+      <End Role="piloto_avion" EntitySet="piloto_avion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_piloto_avion_pilotos" Association="dbModel.Store.FK_piloto_avion_pilotos">
+      <End Role="pilotos" EntitySet="pilotos" />
+      <End Role="piloto_avion" EntitySet="piloto_avion" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="aviones">
+    <Key>
+      <PropertyRef Name="id_aviones" />
+    </Key>
+    <Property Name="id_aviones" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" />
+    <Property Name="marca" Type="varchar" MaxLength="150" />
+    <Property Name="asi1" Type="int" />
+    <Property Name="asi2" Type="int" />
+    <Property Name="asi3" Type="int" />
+    <Property Name="comb" Type="int" />
+    <Property Name="id_tipo" Type="int" />
+  </EntityType>
+  <EntityType Name="piloto_avion">
+    <Key>
+      <PropertyRef Name="id_avion_piloto" />
+    </Key>
+    <Property Name="id_avion_piloto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id_piloto" Type="int" Nullable="false" />
+    <Property Name="id_aviones" Type="int" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pilotos">
+    <Key>
+      <PropertyRef Name="id_piloto" />
+    </Key>
+    <Property Name="id_piloto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="apellidos" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="edad" Type="int" Nullable="false" />
+    <Property Name="grado" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tipo">
+    <Key>
+      <PropertyRef Name="id_tipo" />
+    </Key>
+    <Property Name="id_tipo" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <Association Name="FK_aviones_tipo">
+    <End Role="tipo" Type="dbModel.Store.tipo" Multiplicity="0..1" />
+    <End Role="aviones" Type="dbModel.Store.aviones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo">
+        <PropertyRef Name="id_tipo" />
+      </Principal>
+      <Dependent Role="aviones">
+        <PropertyRef Name="id_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_piloto_avion_aviones">
+    <End Role="aviones" Type="dbModel.Store.aviones" Multiplicity="1" />
+    <End Role="piloto_avion" Type="dbModel.Store.piloto_avion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aviones">
+        <PropertyRef Name="id_aviones" />
+      </Principal>
+      <Dependent Role="piloto_avion">
+        <PropertyRef Name="id_piloto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_piloto_avion_pilotos">
+    <End Role="pilotos" Type="dbModel.Store.pilotos" Multiplicity="1" />
+    <End Role="piloto_avion" Type="dbModel.Store.piloto_avion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pilotos">
+        <PropertyRef Name="id_piloto" />
+      </Principal>
+      <Dependent Role="piloto_avion">
+        <PropertyRef Name="id_piloto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="dbModelStoreContainer">
+          <EntitySet Name="aviones" EntityType="dbModel.Store.aviones" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="piloto_avion" EntityType="dbModel.Store.piloto_avion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="pilotos" EntityType="dbModel.Store.pilotos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tipo" EntityType="dbModel.Store.tipo" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_aviones_tipo" Association="dbModel.Store.FK_aviones_tipo">
+            <End Role="tipo" EntitySet="tipo" />
+            <End Role="aviones" EntitySet="aviones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_piloto_avion_aviones" Association="dbModel.Store.FK_piloto_avion_aviones">
+            <End Role="aviones" EntitySet="aviones" />
+            <End Role="piloto_avion" EntitySet="piloto_avion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_piloto_avion_pilotos" Association="dbModel.Store.FK_piloto_avion_pilotos">
+            <End Role="pilotos" EntitySet="pilotos" />
+            <End Role="piloto_avion" EntitySet="piloto_avion" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aviones">
+          <Key>
+            <PropertyRef Name="id_aviones" />
+          </Key>
+          <Property Name="id_aviones" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="150" />
+          <Property Name="marca" Type="varchar" MaxLength="150" />
+          <Property Name="asi1" Type="int" />
+          <Property Name="asi2" Type="int" />
+          <Property Name="asi3" Type="int" />
+          <Property Name="comb" Type="int" />
+          <Property Name="id_tipo" Type="int" />
+        </EntityType>
+        <EntityType Name="piloto_avion">
+          <Key>
+            <PropertyRef Name="id_avion_piloto" />
+          </Key>
+          <Property Name="id_avion_piloto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_piloto" Type="int" Nullable="false" />
+          <Property Name="id_aviones" Type="int" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pilotos">
+          <Key>
+            <PropertyRef Name="id_piloto" />
+          </Key>
+          <Property Name="id_piloto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="apellidos" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="edad" Type="int" Nullable="false" />
+          <Property Name="grado" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tipo">
+          <Key>
+            <PropertyRef Name="id_tipo" />
+          </Key>
+          <Property Name="id_tipo" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_aviones_tipo">
+          <End Role="tipo" Type="dbModel.Store.tipo" Multiplicity="0..1" />
+          <End Role="aviones" Type="dbModel.Store.aviones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo">
+              <PropertyRef Name="id_tipo" />
+            </Principal>
+            <Dependent Role="aviones">
+              <PropertyRef Name="id_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_piloto_avion_aviones">
+          <End Role="aviones" Type="dbModel.Store.aviones" Multiplicity="1" />
+          <End Role="piloto_avion" Type="dbModel.Store.piloto_avion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aviones">
+              <PropertyRef Name="id_aviones" />
+            </Principal>
+            <Dependent Role="piloto_avion">
+              <PropertyRef Name="id_piloto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_piloto_avion_pilotos">
+          <End Role="pilotos" Type="dbModel.Store.pilotos" Multiplicity="1" />
+          <End Role="piloto_avion" Type="dbModel.Store.piloto_avion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pilotos">
+              <PropertyRef Name="id_piloto" />
+            </Principal>
+            <Dependent Role="piloto_avion">
+              <PropertyRef Name="id_piloto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aviones" EntityType="dbModel.aviones" />
+          <EntitySet Name="tipo" EntityType="dbModel.tipo" />
+          <AssociationSet Name="FK_aviones_tipo" Association="dbModel.FK_aviones_tipo">
+            <End Role="tipo" EntitySet="tipo" />
+            <End Role="aviones" EntitySet="aviones" />
+          </AssociationSet>
+          <EntitySet Name="piloto_avion" EntityType="dbModel.piloto_avion" />
+          <EntitySet Name="pilotos" EntityType="dbModel.pilotos" />
+          <AssociationSet Name="FK_piloto_avion_aviones" Association="dbModel.FK_piloto_avion_aviones">
+            <End Role="aviones" EntitySet="aviones" />
+            <End Role="piloto_avion" EntitySet="piloto_avion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_piloto_avion_pilotos" Association="dbModel.FK_piloto_avion_pilotos">
+            <End Role="pilotos" EntitySet="pilotos" />
+            <End Role="piloto_avion" EntitySet="piloto_avion" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aviones">
+          <Key>
+            <PropertyRef Name="id_aviones" />
+          </Key>
+          <Property Name="id_aviones" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="marca" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="asi1" Type="Int32" />
+          <Property Name="asi2" Type="Int32" />
+          <Property Name="asi3" Type="Int32" />
+          <Property Name="comb" Type="Int32" />
+          <Property Name="id_tipo" Type="Int32" />
+          <NavigationProperty Name="tipo" Relationship="dbModel.FK_aviones_tipo" FromRole="aviones" ToRole="tipo" />
+          <NavigationProperty Name="piloto_avion" Relationship="dbModel.FK_piloto_avion_aviones" FromRole="aviones" ToRole="piloto_avion" />
+        </EntityType>
+        <EntityType Name="tipo">
+          <Key>
+            <PropertyRef Name="id_tipo" />
+          </Key>
+          <Property Name="id_tipo" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="aviones" Relationship="dbModel.FK_aviones_tipo" FromRole="tipo" ToRole="aviones" />
+        </EntityType>
+        <Association Name="FK_aviones_tipo">
+          <End Role="tipo" Type="dbModel.tipo" Multiplicity="0..1" />
+          <End Role="aviones" Type="dbModel.aviones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo">
+              <PropertyRef Name="id_tipo" />
+            </Principal>
+            <Dependent Role="aviones">
+              <PropertyRef Name="id_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="piloto_avion">
+          <Key>
+            <PropertyRef Name="id_avion_piloto" />
+          </Key>
+          <Property Type="Int32" Name="id_avion_piloto" Nullable="false" />
+          <Property Type="Int32" Name="id_piloto" Nullable="false" />
+          <Property Type="Int32" Name="id_aviones" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="aviones" Relationship="dbModel.FK_piloto_avion_aviones" FromRole="piloto_avion" ToRole="aviones" />
+          <NavigationProperty Name="pilotos" Relationship="dbModel.FK_piloto_avion_pilotos" FromRole="piloto_avion" ToRole="pilotos" />
+        </EntityType>
+        <EntityType Name="pilotos">
+          <Key>
+            <PropertyRef Name="id_piloto" />
+          </Key>
+          <Property Type="Int32" Name="id_piloto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="edad" Nullable="false" />
+          <Property Type="String" Name="grado" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="piloto_avion" Relationship="dbModel.FK_piloto_avion_pilotos" FromRole="pilotos" ToRole="piloto_avion" />
+        </EntityType>
+        <Association Name="FK_piloto_avion_aviones">
+          <End Type="dbModel.aviones" Role="aviones" Multiplicity="1" />
+          <End Type="dbModel.piloto_avion" Role="piloto_avion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aviones">
+              <PropertyRef Name="id_aviones" />
+            </Principal>
+            <Dependent Role="piloto_avion">
+              <PropertyRef Name="id_piloto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_piloto_avion_pilotos">
+          <End Type="dbModel.pilotos" Role="pilotos" Multiplicity="1" />
+          <End Type="dbModel.piloto_avion" Role="piloto_avion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pilotos">
+              <PropertyRef Name="id_piloto" />
+            </Principal>
+            <Dependent Role="piloto_avion">
+              <PropertyRef Name="id_piloto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="dbEntities">
+          <EntitySetMapping Name="aviones">
+            <EntityTypeMapping TypeName="dbModel.aviones">
+              <MappingFragment StoreEntitySet="aviones">
+                <ScalarProperty Name="id_aviones" ColumnName="id_aviones" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="asi1" ColumnName="asi1" />
+                <ScalarProperty Name="asi2" ColumnName="asi2" />
+                <ScalarProperty Name="asi3" ColumnName="asi3" />
+                <ScalarProperty Name="comb" ColumnName="comb" />
+                <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo">
+            <EntityTypeMapping TypeName="dbModel.tipo">
+              <MappingFragment StoreEntitySet="tipo">
+                <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="piloto_avion">
+            <EntityTypeMapping TypeName="dbModel.piloto_avion">
+              <MappingFragment StoreEntitySet="piloto_avion">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_aviones" ColumnName="id_aviones" />
+                <ScalarProperty Name="id_piloto" ColumnName="id_piloto" />
+                <ScalarProperty Name="id_avion_piloto" ColumnName="id_avion_piloto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pilotos">
+            <EntityTypeMapping TypeName="dbModel.pilotos">
+              <MappingFragment StoreEntitySet="pilotos">
+                <ScalarProperty Name="grado" ColumnName="grado" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_piloto" ColumnName="id_piloto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="dbModel.aviones" Width="1.5" PointX="3" PointY="1" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.tipo" Width="1.5" PointX="0.75" PointY="1.5" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="dbModel.FK_aviones_tipo" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.297841796875" />
+          <ConnectorPoint PointX="3" PointY="2.297841796875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="dbModel.piloto_avion" Width="1.5" PointX="5.25" PointY="1.375" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="dbModel.pilotos" Width="1.5" PointX="3" PointY="5.375" Height="2.1725878906249996" />
+        <AssociationConnector Association="dbModel.FK_piloto_avion_aviones" >
+          <ConnectorPoint PointX="4.5" PointY="2.4612939453125" />
+          <ConnectorPoint PointX="5.25" PointY="2.4612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbModel.FK_piloto_avion_pilotos" >
+          <ConnectorPoint PointX="4.5" PointY="6.4612939453125" />
+          <ConnectorPoint PointX="6" PointY="6.4612939453125" />
+          <ConnectorPoint PointX="6" PointY="3.5475878906249996" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,56 @@
+﻿body {
+}
+
+
+#jumbotron 
+{
+	background-image: url('../Imagen/1883978.jpg');
+	background-repeat:no-repeat;
+	background-size: cover;
+	
+	min-height:500px;
+	}
+	
+#contenidoJumbo
+{
+	background-color: white;
+	padding: 0px;
+	margin: 30px;
+	right: auto;
+	
+	}
+
+#contenidoJumbo > h3
+{
+	padding: 10px;
+	margin: 0px;
+	background-color: blue;
+	color: rgba(255,255,255,0.8);
+	
+	
+	
+	
+	}
+	
+	
+	/* Diseño de Tablas*/
+	
+	table 
+{
+  border: solid 1px #e8eef4;
+  border-collapse: collapse;
+}
+
+table td 
+{
+  padding: 5px;   
+  border: solid 1px #e8eef4;
+}
+
+table th
+{
+  padding: 6px 5px;
+  text-align: left;
+  background-color: #F08080; 
+  border: solid 1px #e8eef4;   
+}

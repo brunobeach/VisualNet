@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="aviones" EntityType="dbModel.aviones" />
+    <EntitySet Name="tipo" EntityType="dbModel.tipo" />
+    <AssociationSet Name="FK_aviones_tipo" Association="dbModel.FK_aviones_tipo">
+      <End Role="tipo" EntitySet="tipo" />
+      <End Role="aviones" EntitySet="aviones" />
+    </AssociationSet>
+    <EntitySet Name="piloto_avion" EntityType="dbModel.piloto_avion" />
+    <EntitySet Name="pilotos" EntityType="dbModel.pilotos" />
+    <AssociationSet Name="FK_piloto_avion_aviones" Association="dbModel.FK_piloto_avion_aviones">
+      <End Role="aviones" EntitySet="aviones" />
+      <End Role="piloto_avion" EntitySet="piloto_avion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_piloto_avion_pilotos" Association="dbModel.FK_piloto_avion_pilotos">
+      <End Role="pilotos" EntitySet="pilotos" />
+      <End Role="piloto_avion" EntitySet="piloto_avion" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="aviones">
+    <Key>
+      <PropertyRef Name="id_aviones" />
+    </Key>
+    <Property Name="id_aviones" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="marca" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="asi1" Type="Int32" />
+    <Property Name="asi2" Type="Int32" />
+    <Property Name="asi3" Type="Int32" />
+    <Property Name="comb" Type="Int32" />
+    <Property Name="id_tipo" Type="Int32" />
+    <NavigationProperty Name="tipo" Relationship="dbModel.FK_aviones_tipo" FromRole="aviones" ToRole="tipo" />
+    <NavigationProperty Name="piloto_avion" Relationship="dbModel.FK_piloto_avion_aviones" FromRole="aviones" ToRole="piloto_avion" />
+  </EntityType>
+  <EntityType Name="tipo">
+    <Key>
+      <PropertyRef Name="id_tipo" />
+    </Key>
+    <Property Name="id_tipo" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="aviones" Relationship="dbModel.FK_aviones_tipo" FromRole="tipo" ToRole="aviones" />
+  </EntityType>
+  <Association Name="FK_aviones_tipo">
+    <End Role="tipo" Type="dbModel.tipo" Multiplicity="0..1" />
+    <End Role="aviones" Type="dbModel.aviones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo">
+        <PropertyRef Name="id_tipo" />
+      </Principal>
+      <Dependent Role="aviones">
+        <PropertyRef Name="id_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="piloto_avion">
+    <Key>
+      <PropertyRef Name="id_avion_piloto" />
+    </Key>
+    <Property Type="Int32" Name="id_avion_piloto" Nullable="false" />
+    <Property Type="Int32" Name="id_piloto" Nullable="false" />
+    <Property Type="Int32" Name="id_aviones" Nullable="false" />
+    <Property Type="Boolean" Name="estado" Nullable="false" />
+    <NavigationProperty Name="aviones" Relationship="dbModel.FK_piloto_avion_aviones" FromRole="piloto_avion" ToRole="aviones" />
+    <NavigationProperty Name="pilotos" Relationship="dbModel.FK_piloto_avion_pilotos" FromRole="piloto_avion" ToRole="pilotos" />
+  </EntityType>
+  <EntityType Name="pilotos">
+    <Key>
+      <PropertyRef Name="id_piloto" />
+    </Key>
+    <Property Type="Int32" Name="id_piloto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="edad" Nullable="false" />
+    <Property Type="String" Name="grado" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="piloto_avion" Relationship="dbModel.FK_piloto_avion_pilotos" FromRole="pilotos" ToRole="piloto_avion" />
+  </EntityType>
+  <Association Name="FK_piloto_avion_aviones">
+    <End Type="dbModel.aviones" Role="aviones" Multiplicity="1" />
+    <End Type="dbModel.piloto_avion" Role="piloto_avion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aviones">
+        <PropertyRef Name="id_aviones" />
+      </Principal>
+      <Dependent Role="piloto_avion">
+        <PropertyRef Name="id_piloto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_piloto_avion_pilotos">
+    <End Type="dbModel.pilotos" Role="pilotos" Multiplicity="1" />
+    <End Type="dbModel.piloto_avion" Role="piloto_avion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pilotos">
+        <PropertyRef Name="id_piloto" />
+      </Principal>
+      <Dependent Role="piloto_avion">
+        <PropertyRef Name="id_piloto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
