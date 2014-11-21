@@ -92,7 +92,7 @@ namespace MvcApplication1.Controllers
  
         public ActionResult Delete(int id)
         {
-            tipo tip = db.tipo.FirstOrDefault(u => u.id_tipo == id);
+            piloto_avion tip = db.piloto_avion.FirstOrDefault(u => u.id_avion_piloto == id);
             return View(tip);
         }
 
@@ -105,7 +105,7 @@ namespace MvcApplication1.Controllers
             try
             {
                 piloto_avion tip = db.piloto_avion.FirstOrDefault(u => u.id_avion_piloto == id);
-                db.DeleteObject(tip);
+                UpdateModel(tip);
                 db.SaveChanges();
  
                 return RedirectToAction("Index");

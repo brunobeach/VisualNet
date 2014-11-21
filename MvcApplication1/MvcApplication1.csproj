@@ -103,8 +103,8 @@
     <Content Include="Views\Avion\Details.aspx" />
     <Content Include="Views\Avion\Edit.aspx" />
     <Content Include="Views\Avion\Index.aspx" />
-    <Content Include="Views\PilotoAvion\Delete.aspx" />
     <Content Include="Views\PilotoAvion\Create.aspx" />
+    <Content Include="Views\PilotoAvion\Delete.aspx" />
     <Content Include="Views\PilotoAvion\Details.aspx" />
     <Content Include="Views\PilotoAvion\Edit.aspx" />
     <Content Include="Views\PilotoAvion\Index.aspx" />
