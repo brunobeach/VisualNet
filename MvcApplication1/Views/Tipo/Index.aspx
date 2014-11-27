@@ -8,7 +8,7 @@
 
     <h2>Index</h2>
 
-    <table>
+    <table class ="table table-hover">
         <tr>
             <th></th>
             <th>

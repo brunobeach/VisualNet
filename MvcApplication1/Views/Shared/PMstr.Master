@@ -13,7 +13,7 @@
     <header>
     
     
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top" id= "page">
                 <div class = "navbar-default navbar-collapse">
                 <div class = "container">
                     <div class = "navbar-header">
@@ -46,14 +46,14 @@
 
 
 
-    <div>
+    <div id="main">
      
         
-           
+        <div id= contenido>
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         
         </asp:ContentPlaceHolder>
-        
+        </div>  
     </div>
 
     <script src="../../Scripts/bootstrap.js" type="text/javascript"></script>

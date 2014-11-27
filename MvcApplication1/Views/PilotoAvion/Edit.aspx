@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.piloto_avion>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/PMstr.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.piloto_avion>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Edit
@@ -6,13 +6,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edit</h2>
+    <h2>Edicion de Viajes</h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
+            <legend></legend>
             
             
             
@@ -31,25 +31,39 @@
              <div class="editor-field">
                 <%: Html.DropDownListFor(model => model.id_aviones, ViewData["aviones"] as SelectList)%>
                 <%: Html.ValidationMessageFor(model => model.id_aviones) %>
-            
+            </div>
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.estado) %>
+                Estado
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.estado) %>
-                <%: Html.ValidationMessageFor(model => model.estado) %>
+                
+                <div><%if (Model.estado == true) 
+               {%>
+                          Activo
+                     <% }
+                        else
+                      {%>
+                      Desactivo
+                     <%
+                      }%>
+               
+               </div> 
             </div>
             
-            <p>
-                <input type="submit" value="Save" />
+            <p >
+               <div id= "sboton">
+        
+                    <input type="submit" class="btn btn-success" value="Guardar" />
+                    <a href="/pilotoavion" class = "btn btn-danger">Volver</a>
+ 
+        
+                 </div> 
             </p>
         </fieldset>
 
     <% } %>
 
-    <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
-    </div>
+    
 
 </asp:Content>
 

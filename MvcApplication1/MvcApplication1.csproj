@@ -95,6 +95,7 @@
     <Content Include="Content\estilo.css" />
     <Content Include="Global.asax" />
     <Content Include="Imagen\1883978.jpg" />
+    <Content Include="Imagen\flight-001-non-stop-travel-icon.gif" />
     <Content Include="Imagen\Start-Demo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />

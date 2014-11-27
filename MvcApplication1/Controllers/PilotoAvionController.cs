@@ -14,6 +14,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Index()
         {
+            ViewData["estado"] = "Activo";
             var pilotoavion = db.piloto_avion.ToList();
             return View(pilotoavion);
         }
@@ -24,7 +25,9 @@ namespace MvcApplication1.Controllers
         public ActionResult Details(int id)
         {
             piloto_avion tip = db.piloto_avion.FirstOrDefault(u => u.id_avion_piloto == id);
+            ViewData["aviones"] = new SelectList(db.aviones.ToList(),"id_aviones", "nombre");
             return View(tip);
+
         }
 
         //

@@ -6,13 +6,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2> Control de Viajes</h2>
 
-    <table>
+    <table class ="table table-hover">
         <tr>
-            <th>
-                Accion
-            </th>
+            
             <th>
                 Codigo Viaje
             </th>
@@ -25,16 +23,15 @@
             <th>
                 Estado
             </th>
+            <th>
+                Accion
+            </th>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
-            <td>
-                <%: Html.ActionLink("Editar", "Edit", new { id=item.id_avion_piloto }) %> |
-                <%: Html.ActionLink("Detalles", "Details", new { id=item.id_avion_piloto })%> |
-                <%: Html.ActionLink("On/Off", "Delete", new { id=item.id_avion_piloto })%>
-            </td>
+            
             <td>
                 <%: item.id_avion_piloto %>
             </td>
@@ -42,10 +39,26 @@
                 <%: item.pilotos.nombre %>
             </td>
             <td>
-                <%: item.id_aviones %>
+                
+                <%: item.id_aviones  %>
             </td>
             <td>
-                <%: item.estado %>
+               <div><%if (item.estado == true) 
+               {%>
+                          Activo
+                     <% }
+                        else
+                      {%>
+                      Desactivo
+                     <%
+                      }%>
+               
+               </div> 
+            </td>
+            <td>
+                <%: Html.ActionLink("Editar", "Edit", new { id=item.id_avion_piloto }) %> |
+                <%: Html.ActionLink("Detalles", "Details", new { id=item.id_avion_piloto })%> |
+                <%: Html.ActionLink("On/Off", "Delete", new { id=item.id_avion_piloto })%>
             </td>
         </tr>
     
@@ -54,7 +67,7 @@
     </table>
 
     <p>
-        <%: Html.ActionLink("Create New", "Create") %>
+        <a href=/pilotoavion/Create class = "btn btn-info">Ingresar Nuevo Viaje</a>
     </p>
 
 </asp:Content>
