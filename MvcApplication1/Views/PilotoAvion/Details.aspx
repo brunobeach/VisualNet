@@ -6,28 +6,42 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Details</h2>
+    <h2></h2>
 
     <fieldset>
-        <legend>Campos</legend>
+        <legend></legend>
+ <div class="panel panel-success">
+ <div class="panel-heading">Detalles del Viaje Numeo <strong><%: Model.id_avion_piloto %></strong></div>
+  <div class="panel-body">
+    
         
-        <div class="display-label">Numero de Viaje</div>
-        <div class="display-field"><%: Model.id_avion_piloto %></div>
+        <div class="display-label">Nombre de Piloto</div>
+        <div class="display-field"><strong><%: Model.pilotos.nombre %></strong> </div>
         
-        <div class="display-label">id_piloto</div>
-        <div class="display-field"><%: Model.pilotos.nombre %></div>
+        <div class="display-label">Nombre de Avion</div>
+        <div class="display-field"><strong><%: Model.id_aviones %></strong></div>
         
-        <div class="display-label">id_aviones</div>
-        <div class="display-field"><%: Model.id_aviones %></div>
+        <div class="display-label">Estado</div>
+        <div><%if (Model.estado == true) 
+               {%>
+                      <strong>Activo!</strong>   
+                     <% }
+                        else
+                      {%>
+                      <strong>Desactivo!</strong>  
+                     <%
+                      }%>
+               
+               </div>
+  </div>
+</div>
         
-        <div class="display-label">estado</div>
-        <div class="display-field"><%: Model.estado %></div>
         
     </fieldset>
     <p>
-
-        <%: Html.ActionLink("Edit", "Edit", new { id=Model.id_avion_piloto }) %> |
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <div>
+        <a href="/pilotoavion" class = "btn btn-danger">Volver</a>
+        </div>
     </p>
 
 </asp:Content>

@@ -6,45 +6,42 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2>Aviones</h2>
 
     <table class ="table table-hover">
         <tr>
-            <th></th>
+            
             <th>
-                id_aviones
+                Codigo
             </th>
             <th>
-                nombre
+                Nombre
             </th>
             <th>
-                marca
+                Marca
             </th>
             <th>
-                asi1
+                First Class
             </th>
             <th>
-                asi2
+                Economic Class
             </th>
             <th>
-                asi3
+                Tourist Class
             </th>
             <th>
-                comb
+                Combustible
             </th>
             <th>
-                id_tipo
+                Tipo
             </th>
+            <th>Accion</th>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
-            <td>
-                <%: Html.ActionLink("Edit", "Edit", new { id=item.id_aviones }) %> |
-                <%: Html.ActionLink("Details", "Details", new { id=item.id_aviones })%> |
-                <%: Html.ActionLink("Delete", "Delete", new { id=item.id_aviones })%>
-            </td>
+            
             <td>
                 <%: item.id_aviones %>
             </td>
@@ -69,6 +66,11 @@
             <td>
                 <%: item.tipo.nombre %>
             </td>
+            <td>
+                <%: Html.ActionLink("Editar", "Edit", new { id=item.id_aviones }) %> | 
+                <%: Html.ActionLink("Detalles", "Details", new { id=item.id_aviones })%> |
+                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.id_aviones })%>
+            </td>
         </tr>
     
     <% } %>
@@ -76,7 +78,7 @@
     </table>
 
     <p>
-        <%: Html.ActionLink("Create New", "Create") %>
+        <a href=/avion/Create class = "btn btn-info">Ingresar Nuevo Avion</a>
     </p>
 
 </asp:Content>

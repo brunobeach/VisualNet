@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.tipo>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/PMstr.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.tipo>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Details
@@ -6,22 +6,25 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Details</h2>
+    <h2></h2>
 
     <fieldset>
-        <legend>Fields</legend>
+        <legend></legend>
+
+        <div class="panel panel-success">
+  <div class="panel-heading">Detalles del Avion <strong><%: Model.nombre %></strong> </div>
+  <div class="panel-body"> 
         
-        <div class="display-label">id_tipo</div>
-        <div class="display-field"><%: Model.id_tipo %></div>
+        <div class="display-label">Codigo</div>
+        <div class="display-field"><strong><%: Model.id_tipo %></strong></div>
         
-        <div class="display-label">nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
         
+        </div></div>
     </fieldset>
     <p>
 
-        <%: Html.ActionLink("Edit", "Edit", new { id=Model.id_tipo }) %> |
-        <%: Html.ActionLink("Back to List", "Index") %>
+       
+        <a href="/tipo" class = "btn btn-danger">Volver</a>
     </p>
 
 </asp:Content>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.pilotos>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/PMstr.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.pilotos>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Edit
@@ -6,16 +6,20 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edit</h2>
+    <h2></h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
+            <legend></legend>
             
+                <div class="panel panel-info">
+                <div class="panel-heading">Edicion de Piloto</div>
+                <div class="panel-body">
+
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.id_piloto) %>
+                Codigo del Piloto
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.id_piloto) %>
@@ -53,17 +57,16 @@
                 <%: Html.TextBoxFor(model => model.grado) %>
                 <%: Html.ValidationMessageFor(model => model.grado) %>
             </div>
-            
+            </div></div>
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" class="btn btn-success" value="Guardar" />
+                <a href="/pilotos" class = "btn btn-danger">Volver</a>
             </p>
         </fieldset>
 
     <% } %>
 
-    <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
-    </div>
+ 
 
 </asp:Content>
 

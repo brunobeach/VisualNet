@@ -99,6 +99,9 @@
     <Content Include="Imagen\Start-Demo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
+    <Content Include="Scripts\jquery.parallax.js" />
+    <Content Include="Scripts\parallax.js" />
+    <Content Include="Scripts\requestAnimationFrame.js" />
     <Content Include="Views\Avion\Create.aspx" />
     <Content Include="Views\Avion\Delete.aspx" />
     <Content Include="Views\Avion\Details.aspx" />

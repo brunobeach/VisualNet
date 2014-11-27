@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edicion de Viajes</h2>
+    <h2></h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
@@ -15,8 +15,10 @@
             <legend></legend>
             
             
-            
-            <div class="editor-label">
+                <div class="panel panel-info">
+                <div class="panel-heading">Edicion de Viaje</div>
+                <div class="panel-body">
+             <div class="editor-label">
                 Nombre del Piloto
             </div>
             <div class="editor-field">
@@ -39,17 +41,20 @@
                 
                 <div><%if (Model.estado == true) 
                {%>
-                          Activo
+                      <strong>Activo!</strong>   
                      <% }
                         else
                       {%>
-                      Desactivo
+                      <strong>Desactivo!</strong>  
                      <%
                       }%>
                
                </div> 
             </div>
-            
+            </div></div>
+
+
+
             <p >
                <div id= "sboton">
         
@@ -58,6 +63,10 @@
  
         
                  </div> 
+                 <div class="alert alert-warning alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                  <strong>Cuidado!</strong> Asegurate de haber editado bien el viaje.
+                </div>
             </p>
         </fieldset>
 

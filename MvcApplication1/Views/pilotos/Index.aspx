@@ -6,36 +6,33 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2>Pilotos</h2>
 
     <table class ="table table-hover">
         <tr>
-            <th></th>
+            
             <th>
-                id_piloto
+                Codigo
             </th>
             <th>
-                nombre
+                Nombre
             </th>
             <th>
-                apellidos
+                Apellidos
             </th>
             <th>
-                edad
+                Edad
             </th>
             <th>
-                grado
+                Grado
             </th>
+            <th>Accion</th>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
-            <td>
-                <%: Html.ActionLink("Edit", "Edit", new { id=item.id_piloto }) %> |
-                <%: Html.ActionLink("Details", "Details", new { id=item.id_piloto })%> |
-                <%: Html.ActionLink("Delete", "Delete", new { id=item.id_piloto })%>
-            </td>
+            
             <td>
                 <%: item.id_piloto %>
             </td>
@@ -51,6 +48,11 @@
             <td>
                 <%: item.grado %>
             </td>
+            <td>
+                <%: Html.ActionLink("Editar", "Edit", new { id=item.id_piloto }) %> |
+                <%: Html.ActionLink("Detalles", "Details", new { id=item.id_piloto })%> |
+                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.id_piloto })%>
+            </td>
         </tr>
     
     <% } %>
@@ -58,7 +60,7 @@
     </table>
 
     <p>
-        <%: Html.ActionLink("Create New", "Create") %>
+        <a href=/pilotos/Create class = "btn btn-info">Ingresar Nuevo Piloto</a>
     </p>
 
 </asp:Content>

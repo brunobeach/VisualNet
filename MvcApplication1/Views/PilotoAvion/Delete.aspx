@@ -6,39 +6,66 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Delete</h2>
+    <h2></h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
+            <legend></legend>
+
+          <%if (Model.estado == true) 
+               {%>
+                      <div class="panel panel-danger">
+                     <% }
+                        else
+                      {%>
+                      <div class="panel panel-success"> 
+                     <%
+                      }%>
+         
+
+
+         <div class="panel-heading"><div><%if (Model.estado == true) 
+               {%>
+                      Desactivar Viaje 
+                     <% }
+                        else
+                      {%>
+                      Activar Viaje  
+                     <%
+                      }%>
+               
+               </div> </div>
+         <div class="panel-body">
+         
             
-            <div class="display-label">id_avion_piloto</div>
-        <div class="display-field"><%: Model.id_avion_piloto %></div>
+        <div class="display-label">Numero de Viaje</div>
+        <div class="display-field"><strong><%: Model.id_avion_piloto %></strong></div>
         
-        <div class="display-label">id_piloto</div>
-        <div class="display-field"><%: Model.pilotos.nombre %></div>
+        <div class="display-label">Nombre de Piloto</div>
+        <div class="display-field"><strong><%: Model.pilotos.nombre %></strong> </div>
         
-        <div class="display-label">id_aviones</div>
-        <div class="display-field"><%: Model.id_aviones %></div>
+        <div class="display-label">Nombre de Avion</div>
+        <div class="display-field"><strong><%: Model.id_aviones %></strong></div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.estado) %> 
+                Estado 
             </div>
             <div class="editor-field">
                 <%: Html.CheckBoxFor(model => model.estado)%>
             </div>
-            
+            </div></div>
             <p>
-                <input type="submit" value="Save" />
+         <input type="submit" class="btn btn-success" value="Guardar" />
+         <a href="/pilotoavion" class = "btn btn-danger">Volver</a>
             </p>
         </fieldset>
 
     <% } %>
 
     <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+        
     </div>
 
 </asp:Content>

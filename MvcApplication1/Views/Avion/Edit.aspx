@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.aviones>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/PMstr.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.aviones>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Edit
@@ -6,24 +6,22 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edit</h2>
+    <h2></h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
+            <legend></legend>
+
+           <div class="panel panel-info">
+           <div class="panel-heading">Edicion del Avion numero <strong><%: Model.id_aviones %></strong></div>
+           <div class="panel-body">
+            
+            
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.id_aviones) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.id_aviones) %>
-                <%: Html.ValidationMessageFor(model => model.id_aviones) %>
-            </div>
-            
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.nombre) %>
+                Nombre del Avion
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.nombre) %>
@@ -31,7 +29,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.marca) %>
+                Marca
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.marca) %>
@@ -39,7 +37,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.asi1) %>
+                Asientos Primera Clase
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.asi1) %>
@@ -47,7 +45,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.asi2) %>
+                Asientos Economicos
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.asi2) %>
@@ -55,7 +53,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.asi3) %>
+                Asientos Turista
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.asi3) %>
@@ -63,7 +61,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.comb) %>
+                Cantidad de Combustible
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.comb) %>
@@ -77,17 +75,17 @@
                 <%: Html.DropDownListFor(model => model.id_tipo, ViewData["tipos"]as SelectList) %>
                 <%: Html.ValidationMessageFor(model => model.id_tipo) %>
             </div>
+            </div></div>
             
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" class="btn btn-success" value="Guardar" />
+                <a href="/avion" class = "btn btn-danger">Volver</a>
             </p>
         </fieldset>
 
     <% } %>
 
-    <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
-    </div>
+    
 
 </asp:Content>
 

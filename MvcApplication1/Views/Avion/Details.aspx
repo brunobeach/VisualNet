@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.aviones>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/PMstr.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.aviones>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Details
@@ -11,35 +11,33 @@
     <fieldset>
         <legend>Fields</legend>
         
-        <div class="display-label">id_aviones</div>
-        <div class="display-field"><%: Model.id_aviones %></div>
+        <div class="panel panel-success">
+  <div class="panel-heading">Detalles del Avion <strong><%: Model.nombre %></strong> Numero<strong> <%: Model.id_aviones %> </strong></div>
+  <div class="panel-body"> 
+
+        <div class="display-label">Marca</div>
+        <div class="display-field"><strong><%: Model.marca %></strong></div>
         
-        <div class="display-label">nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
+        <div class="display-label">Asientos Primera Clase</div>
+        <div class="display-field"><strong><%: Model.asi1 %></strong></div>
         
-        <div class="display-label">marca</div>
-        <div class="display-field"><%: Model.marca %></div>
+        <div class="display-label">Asientos Economicos</div>
+        <div class="display-field"><strong><%: Model.asi2 %></strong></div>
         
-        <div class="display-label">asi1</div>
-        <div class="display-field"><%: Model.asi1 %></div>
+        <div class="display-label">Asientos Turista</div>
+        <div class="display-field"><strong><%: Model.asi3 %></strong></div>
         
-        <div class="display-label">asi2</div>
-        <div class="display-field"><%: Model.asi2 %></div>
+        <div class="display-label">Cantidad de Combustible</div>
+        <div class="display-field"><strong><%: Model.comb %></strong></div>
         
-        <div class="display-label">asi3</div>
-        <div class="display-field"><%: Model.asi3 %></div>
-        
-        <div class="display-label">comb</div>
-        <div class="display-field"><%: Model.comb %></div>
-        
-        <div class="display-label">id_tipo</div>
-        <div class="display-field"><%: Model.id_tipo %></div>
+        <div class="display-label">Tipo</div>
+        <div class="display-field"><strong><%: Model.tipo.nombre %></strong></div>
+        </div></div>
         
     </fieldset>
     <p>
 
-        <%: Html.ActionLink("Edit", "Edit", new { id=Model.id_aviones }) %> |
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <a href="/avion" class = "btn btn-danger">Volver</a>
     </p>
 
 </asp:Content>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.tipo>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/PMstr.Master" Inherits="System.Web.Mvc.ViewPage<MvcApplication1.Models.tipo>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Edit
@@ -6,40 +6,37 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edit</h2>
+    <h2></h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
+            <legend></legend>
+
+            <div class="panel panel-info">
+           <div class="panel-heading">Edicion de Tipo <strong><%: Model.id_tipo %></strong></div>
+           <div class="panel-body">
+            
+            
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.id_tipo) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.id_tipo) %>
-                <%: Html.ValidationMessageFor(model => model.id_tipo) %>
-            </div>
-            
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.nombre) %>
+                Nombre
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.nombre) %>
                 <%: Html.ValidationMessageFor(model => model.nombre) %>
             </div>
-            
+            </div></div>
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" class="btn btn-success" value="Guardar" />
+                <a href="/tipo" class = "btn btn-danger">Volver</a>
             </p>
         </fieldset>
 
     <% } %>
 
-    <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
-    </div>
+    
 
 </asp:Content>
 
