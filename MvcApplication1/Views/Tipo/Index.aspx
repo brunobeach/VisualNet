@@ -42,7 +42,7 @@
     </table>
 
     <p>
-        <a href=/tipo/Create class = "btn btn-info">Ingresar Nuevo Tipo</a>
+        <a href=/tipo/Create class = "btn btn-info"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Ingresar Nuevo Tipo</a>
     </p>
 
 </asp:Content>

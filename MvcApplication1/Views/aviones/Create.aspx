@@ -6,20 +6,16 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2></h2>
+    <h2>Create</h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
-            <legend></legend>
-  <div class="panel panel-warning">
-  <div class="panel-heading">Ingresar un nuevo Viaje</div>
-  <div class="panel-body"> 
-
+            <legend>Fields</legend>
             
             <div class="editor-label">
-                Codigo del Avion
+                <%: Html.LabelFor(model => model.id_aviones) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.id_aviones) %>
@@ -27,7 +23,7 @@
             </div>
             
             <div class="editor-label">
-                Nombre
+                <%: Html.LabelFor(model => model.nombre) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.nombre) %>
@@ -35,7 +31,7 @@
             </div>
             
             <div class="editor-label">
-                Marca
+                <%: Html.LabelFor(model => model.marca) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.marca) %>
@@ -43,7 +39,7 @@
             </div>
             
             <div class="editor-label">
-                Asientos de First Class
+                <%: Html.LabelFor(model => model.asi1) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.asi1) %>
@@ -51,7 +47,7 @@
             </div>
             
             <div class="editor-label">
-                Asientos de Economic Class
+                <%: Html.LabelFor(model => model.asi2) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.asi2) %>
@@ -59,7 +55,7 @@
             </div>
             
             <div class="editor-label">
-                Asientos Tourist Class
+                <%: Html.LabelFor(model => model.asi3) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.asi3) %>
@@ -67,7 +63,7 @@
             </div>
             
             <div class="editor-label">
-                Combustible
+                <%: Html.LabelFor(model => model.comb) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.comb) %>
@@ -75,23 +71,23 @@
             </div>
             
             <div class="editor-label">
-                Tipo de Avion
+                <%: Html.LabelFor(model => model.id_tipo) %>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.id_tipo, ViewData["tipos"]as SelectList) %>
+                <%: Html.DropDownListFor(model => model.id_tipo, ViewData["tipo"] as SelectList)%>
                 <%: Html.ValidationMessageFor(model => model.id_tipo) %>
-            </div></div></div>
+            </div>
             
             <p>
-                <input type="submit" class="btn btn-success" value="Guardar" />
-                <a href="/avion" class = "btn btn-danger">Volver</a>
+                <input type="submit" value="Create" />
             </p>
         </fieldset>
 
     <% } %>
 
-    
-    
+    <div>
+        <%: Html.ActionLink("Back to List", "Index") %>
+    </div>
 
 </asp:Content>
 

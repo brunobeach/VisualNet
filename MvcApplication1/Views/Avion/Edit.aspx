@@ -15,7 +15,7 @@
             <legend></legend>
 
            <div class="panel panel-info">
-           <div class="panel-heading">Edicion del Avion numero <strong><%: Model.id_aviones %></strong></div>
+           <div class="panel-heading">Edicion del Avion numero <strong></strong></div>
            <div class="panel-body">
             
             
@@ -72,7 +72,7 @@
                 Tipo de Avion
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.id_tipo, ViewData["tipos"]as SelectList) %>
+               
                 <%: Html.ValidationMessageFor(model => model.id_tipo) %>
             </div>
             </div></div>

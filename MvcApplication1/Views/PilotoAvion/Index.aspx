@@ -67,7 +67,7 @@
     </table>
 
     <p>
-        <a href=/pilotoavion/Create class = "btn btn-info">Ingresar Nuevo Viaje</a>
+        <a href=/pilotoavion/Create class = "btn btn-info"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Ingresar Nuevo Viaje</a>
     </p>
 
 </asp:Content>

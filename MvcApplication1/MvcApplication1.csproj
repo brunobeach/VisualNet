@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AvionController.cs" />
+    <Compile Include="Controllers\avionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PilotoAvionController.cs" />
     <Compile Include="Controllers\pilotosController.cs" />
@@ -78,6 +79,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\avion.cs" />
     <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,17 +93,28 @@
     <Content Include="App_Data\db_log.ldf">
       <DependentUpon>db.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\1140.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="Content\estilo.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Imagen\1883978.jpg" />
     <Content Include="Imagen\flight-001-non-stop-travel-icon.gif" />
+    <Content Include="Imagen\layer1.png" />
+    <Content Include="Imagen\layer2.png" />
+    <Content Include="Imagen\layer3.png" />
+    <Content Include="Imagen\layer4.png" />
+    <Content Include="Imagen\layer5.png" />
+    <Content Include="Imagen\layer6.png" />
     <Content Include="Imagen\Start-Demo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery.parallax.js" />
     <Content Include="Scripts\parallax.js" />
     <Content Include="Scripts\requestAnimationFrame.js" />
+    <Content Include="Views\aviones\Create.aspx" />
+    <Content Include="Views\aviones\Index.aspx" />
     <Content Include="Views\Avion\Create.aspx" />
     <Content Include="Views\Avion\Delete.aspx" />
     <Content Include="Views\Avion\Details.aspx" />
@@ -153,7 +166,9 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Shared\PMstr2.Master" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\PMstr.Master" />
   </ItemGroup>
@@ -162,6 +177,11 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

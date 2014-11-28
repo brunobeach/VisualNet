@@ -6,42 +6,45 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Aviones</h2>
+    <h2>Index</h2>
 
-    <table class ="table table-hover">
+    <table>
         <tr>
-            
+            <th></th>
             <th>
-                Codigo
+                id_aviones
             </th>
             <th>
-                Nombre
+                nombre
             </th>
             <th>
-                Marca
+                marca
             </th>
             <th>
-                First Class
+                asi1
             </th>
             <th>
-                Economic Class
+                asi2
             </th>
             <th>
-                Tourist Class
+                asi3
             </th>
             <th>
-                Combustible
+                comb
             </th>
             <th>
-                Tipo
+                id_tipo
             </th>
-            <th>Accion</th>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
-            
+            <td>
+                <%: Html.ActionLink("Edit", "Edit", new { id=item.id_aviones }) %> |
+                <%: Html.ActionLink("Details", "Details", new { id=item.id_aviones })%> |
+                <%: Html.ActionLink("Delete", "Delete", new { id=item.id_aviones })%>
+            </td>
             <td>
                 <%: item.id_aviones %>
             </td>
@@ -64,12 +67,7 @@
                 <%: item.comb %>
             </td>
             <td>
-                <%: item.tipo.nombre %>
-            </td>
-            <td>
-                <%: Html.ActionLink("Editar", "Edit", new { id=item.id_aviones }) %> | 
-                <%: Html.ActionLink("Detalles", "Details", new { id=item.id_aviones })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.id_aviones })%>
+                <%: item.id_tipo %>
             </td>
         </tr>
     
@@ -78,7 +76,7 @@
     </table>
 
     <p>
-        <a href=/avion/Create class = "btn btn-info"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Ingresar Nuevo Avion</a>
+        <%: Html.ActionLink("Create New", "Create") %>
     </p>
 
 </asp:Content>

@@ -56,6 +56,8 @@ namespace MvcApplication1.Controllers
             }
             catch (Exception e)
             {
+                ViewData["pilotos"] = new SelectList(db.pilotos.ToList(), "id_piloto", "nombre");
+                ViewData["aviones"] = new SelectList(db.aviones.ToList(), "id_aviones", "nombre");
                 return View();
             }
         }

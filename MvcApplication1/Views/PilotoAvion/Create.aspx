@@ -44,8 +44,8 @@
             </div>
       </div></div>
             <p>
-                <input type="submit" class="btn btn-success" value="Guardar" />
-                <a href="/pilotoavion" class = "btn btn-danger">Volver</a>
+                <input type="submit" class="btn btn-success" value="Guardar"/>
+                <a href="/pilotoavion" class = "btn btn-danger"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Volver</a>
             </p>
         </fieldset>
 

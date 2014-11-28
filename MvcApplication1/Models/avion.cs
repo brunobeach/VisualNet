@@ -7,11 +7,11 @@ using System.ComponentModel.DataAnnotations; //libreria
 namespace MvcApplication1.Models
 {
 
-    [MetadataType(typeof(catalogadorTipo))]
-    public partial class tipo
+    [MetadataType(typeof(catalogadorAviones))]
+    public partial class aviones
     {
 
-        public class catalogadorTipo {
+        public class catalogadorAviones {
 
             [Required(ErrorMessage = "El Nombre es obligatorio")]
             [StringLength(20,ErrorMessage="El largo maximo es de 20")]
@@ -19,7 +19,16 @@ namespace MvcApplication1.Models
 
 
             [Required(ErrorMessage = "El Codigo es obligatorio")]
+            public string id_aviones { get; set; }
+
+            [Required(ErrorMessage = "El Tipo es obligatorio")]
             public string id_tipo { get; set; }
+
+            [Required(ErrorMessage = "La Marca es obligatoria")]
+            public string marca { get; set; }
+
+            [Required(ErrorMessage = "El Combustible es obligatorio")]
+            public string comb { get; set; }
 
         }
         
